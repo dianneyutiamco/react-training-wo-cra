@@ -34,7 +34,8 @@ module.exports = {
     },
     devServer : {
         contentBase : "./dist", // if running on webpack-dev-server, serve content from here
-        writeToDisk : true
+        writeToDisk : true,
+        historyApiFallback: true //  solves the Cannot Get URL * issue : https://stackoverflow.com/questions/43209666/react-router-v4-cannot-get-url
     },
     plugins : [
         new HtmlWebpackPlugin ({
