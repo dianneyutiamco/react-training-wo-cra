@@ -1,21 +1,23 @@
 import * as React from "react";
 import { string } from "prop-types";
+import { Redirect, useRouteMatch, useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
-export interface Calculation {
-    id: number;
-    name: string;
-    inputFields: string[];
-    outputFields: string[];
-    formula: string;
+// TODO : organize interfaces/models into separate folders
+export interface CalculationProps {
+  id: number;
+  name: string;
+  formula: string;
 }
-const CalculationRow = (item: Calculation) => {
-    return (
-        <div>
-            <tr>
-                <td>{item.id}</td>
-                <td>{item.name}</td>
-                <td>Edit</td>
-            </tr>
-        </div>
-    );
+
+export const CalculationRow = (props: CalculationProps) => {
+  let history = useHistory();
+  return (
+    <tr onClick={() => {
+      history.push(`/calculation/${props.id}`);
+    }}>
+      <td>{props.id}</td>
+      <td>{props.name}</td>
+    </tr>
+  );
 }

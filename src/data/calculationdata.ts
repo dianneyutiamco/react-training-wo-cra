@@ -7,7 +7,7 @@ export const calculationData = [
         formula: "coverId.sumStart * percentage"
     },
     {
-        id: 0,
+        id: 1,
         name: "LPI Schedule",
         inputFields: ["coverId", "sumStart", "percentage"],
         outputFields: ["coverId", "netPremium"],
