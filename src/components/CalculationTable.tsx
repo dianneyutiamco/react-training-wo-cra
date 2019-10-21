@@ -7,10 +7,8 @@ export const CalculationTable = () => {
   // const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    setTimeout(() => {
       setCalculationList(calculationData);
       // setIsLoading(false);
-    }, 1500);
   }, []);
 
   return (

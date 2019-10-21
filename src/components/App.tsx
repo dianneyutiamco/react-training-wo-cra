@@ -3,7 +3,7 @@ import * as React from 'react';
 import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
 import { Home } from './Home';
 import { Calculations } from './Calculations';
-import { Calculation } from './Calculation';
+import { CalculationDetails } from './CalculationDetails';
 
 export const App = () => {
     // TODO : maybe wrap the top-level <App> in <Router> instead
@@ -19,7 +19,7 @@ export const App = () => {
                 </Route>
 
                 <Route path="/calculation/:id">
-                    <Calculation />
+                    <CalculationDetails />
                 </Route>
 
                 <Route path="/calculations">
