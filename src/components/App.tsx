@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
 import { Home } from './Home';
 import { Calculations } from './Calculations';
 import { CalculationDetails } from './CalculationDetails';
+import { NewInputParameter } from './NewInputParameter';
 
 export const App = () => {
     // TODO : maybe wrap the top-level <App> in <Router> instead
@@ -18,13 +19,18 @@ export const App = () => {
                     <Home />
                 </Route>
 
-                <Route path="/calculation/:id">
+                <Route path="/calculations/:id/inputparameter/new">
+                    <NewInputParameter />
+                </Route>
+
+                <Route path="/calculations/:id">
                     <CalculationDetails />
                 </Route>
 
                 <Route path="/calculations">
                     <Calculations />
                 </Route>
+                
             </Switch>
         </Router>
     );

@@ -1,11 +1,13 @@
 import * as React from "react";
-import { useParams, useHistory } from "react-router";
+import { useParams, useHistory, useRouteMatch } from "react-router";
 import { calculationDetailsList } from "../data/calculationdetails";
-import { ReadOnlyInputObject } from "./ReadOnlyInputField";
+import { ReadOnlyInputObject } from "./ReadOnlyInputObject";
+import { Link } from "react-router-dom";
 
-export const CalculationDetails = () => {
+export const CalculationDetails:React.FunctionComponent = () => {
   const { id } = useParams();
   const history = useHistory();
+  const { url, path } = useRouteMatch();
 
   // TODO : maybe make this a typed useState
   const [calculationDetails, setCalculationDetails] = React.useState(undefined);
@@ -33,9 +35,12 @@ export const CalculationDetails = () => {
             <h3>Input Parameters</h3>
             <table style={{border: "1px solid black", borderCollapse: "collapse"}}>
               <thead>
-                <th style={border}>Name</th>
-                <th style={border}>Type</th>
-                <th style={border}>Validation</th>
+                <tr>
+                  <th style={border}>Name</th>
+                  <th style={border}>Type</th>
+                  <th style={border}>Validation</th>
+                  <th style={border}></th>
+                </tr>
               </thead>
             
               <tbody>
@@ -53,7 +58,10 @@ export const CalculationDetails = () => {
                 }
               </tbody>
             </table>
-            <button onClick={() => {history.goBack()}}>Add Input</button>
+
+            <Link to={`${url}/inputparameter/new`}>
+              <span>Add Input  </span>
+            </Link>
 
             <h3>Output Parameters</h3>
             

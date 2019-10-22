@@ -19,6 +19,10 @@ const ReadOnlyInputField = (props: ReadOnlyInputField) => {
       <td style={border}>{props.name}</td>
       <td style={border}>{props.inputType}</td>
       <td style={border}>{props.validation}</td>
+      <td>
+        <button onClick={(e) => e.preventDefault()}>Edit</button>
+        <button onClick={(e) => e.preventDefault()}>Delete</button>
+      </td>
     </tr>
   )
 }
@@ -28,7 +32,7 @@ export const ReadOnlyInputObject = (props: ReadOnlyInputField) => {
       props.inputType === "Object" ? (
         <>
           <tr>
-            <td colSpan={3}>{props.name}</td>
+            <td colSpan={4}>{props.name}</td>
           </tr>
 
           {props.fields

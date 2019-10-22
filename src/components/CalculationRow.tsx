@@ -14,7 +14,7 @@ export const CalculationRow = (props: CalculationProps) => {
   let history = useHistory();
   return (
     <tr onClick={() => {
-      history.push(`/calculation/${props.id}`);
+      history.push(`/calculations/${props.id}`);
     }}>
       <td>{props.id}</td>
       <td>{props.name}</td>
