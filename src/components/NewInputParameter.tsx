@@ -1,73 +1,75 @@
 import * as React from "react";
-import { useHistory, Redirect } from "react-router";
+import { useHistory } from "react-router";
+import { ValidationTagList } from "./ValidationTagList";
+import { ValidationTagModel } from "./ValidationTagModel";
+import { validationRules } from "../data/validationRules";
+import { ValidationDropDown, ValidationRuleModel } from "./ValidationDropDown";
 
 export const NewInputParameter:React.FunctionComponent = () => {
   const [name, setName] = React.useState<string>("");
   // TODO : use enums
   const [inputType, setInputType] = React.useState<string>("");
-  const [validation, setValidation] = React.useState<string>("");
-  const [validations, setValidations] = React.useState<string[]>(["Required", "Date Format"]);
+  const [validationTagList, setValidationTagList] = React.useState<ValidationTagModel[]>([]);
   const [defaultValue, setDefaultValue] = React.useState<string>("");
   const [description, setDescription] = React.useState<string>("");
 
   const history = useHistory();
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = (e: React.FormEvent) => {
+    // TODO : validation
     // TODO : save
-    console.log("handleSubmit");
-    // history.goBack();
     e.preventDefault();
-    <Redirect to="/calculations/0" />
+    // TODO : use id from props instead of hardcoding 0
+    history.push("/calculations/0");
+  }
+
+  const addValidationTagOnClick = (validationRule: ValidationRuleModel) => {
+    let {id, label} = validationRule;
+    if (validationTagList.length <= 0 
+      || validationTagList.filter((item) => item.id === id).length <= 0) {
+      setValidationTagList([...validationTagList, new ValidationTagModel({id, label})]);
+    }
+    // TODO : display warning/error message    
+  }
+
+  const removeValidationTagOnClick = (validationTag: ValidationTagModel) => {
+    setValidationTagList(validationTagList.filter((item) => item.id !== validationTag.id));
   }
 
   return(
     <>
       <h3>New Input Parameter</h3>
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <div>
           <label>Name</label>
           <input 
             type="text" 
             value={name}
             onChange={(e) => setName(e.target.value)}/>
-
-          {
-            // TODO : use a list of values for options
-          }
         </div>
 
+        {
+          // TODO : use a list of values for options
+        }
         <div>
           <label>Input Type</label>
           <select value={inputType} onChange={(e) => setInputType(e.target.value)}>
             <option value="String">String</option>
-            <option value="Object">Object</option>
             <option value="Money">Money</option>
             <option value="Date">Date</option>
-            <option value="Custom Enum1">Custom Enum1</option>
+            <option value="Agreement">Agreement</option>
+            <option value="Cover">Agreement</option>
+            <option value="Custom Object">Custom Object</option>
           </select>
         </div>
 
+        {
+          // TODO : dropdown and taglist can be in one component
+        }
         <div>
           <label>Validations</label>
-          <input 
-            type="text" 
-            value={validation}
-            onChange={(e) => setValidation(e.target.value)}/>
-          <span onClick={() => validation && setValidations([...validations, validation])}>+ Add</span>
-
-          <div>
-            {validations.length > 0 
-              && validations.map((item) => 
-                <div key={item} style={{
-                  display: "inline-block", 
-                  marginRight: "5px", 
-                  border: "1px solid black", 
-                  borderRadius: "2px"}}>
-                  <span>{item} x</span>
-                </div>
-              )
-            }
-          </div>
+          <ValidationDropDown validationRules={validationRules} addValidationOnClick={addValidationTagOnClick} />
+          <ValidationTagList validations={validationTagList} removeValidationTag={removeValidationTagOnClick}/>
         </div>
 
         <div>
@@ -87,11 +89,10 @@ export const NewInputParameter:React.FunctionComponent = () => {
           />
         </div>
 
-        <button onClick={(e) => handleSubmit(e)}>Save</button>
+        <button>Save</button>
       </form>
 
       <button onClick={() => history.goBack()}>Cancel</button>
-      
     </>
   );
 }
