@@ -4,3 +4,27 @@
 {/* <List>
   Children
 </List> */}
+
+import * as React from 'react';
+
+export class ListProps {
+  headers?: string[];
+  columns: string[];
+  customRenderRow?: (arg: any[]) => void;
+  url?: string;
+}
+
+export const List = (props: ListProps) => {
+  const [list, setList] = React.useState([]);
+
+  return (
+    <div>
+      {
+        props.headers.map(item => <div>{item}</div>)
+      }
+      {/* {
+        props.renderContents()
+      } */}
+    </div>
+  );
+};

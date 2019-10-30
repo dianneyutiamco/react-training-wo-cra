@@ -1,6 +1,13 @@
 import * as React from "react";
 import { NewValidation } from "./NewValidation";
 import { useHistory } from "react-router";
+import { List } from "./List";
+
+interface ListRow {
+  label: string;
+  rule: string;
+  description: string;
+}
 
 export const Validations = () => {
   const history = useHistory();
@@ -17,6 +24,16 @@ export const Validations = () => {
       {
         // TODO : use <List>...</List>
       }
+      <List 
+        columns={['label', 'rule', 'description']} 
+        customRenderRow={(list:any[]) => {
+          // TODO : need to know the type of data here inorder to render the rows correctly
+          list.map((item:any) => {
+            <div style={{display: "inline"}}>{item.label}</div>
+          });
+        }} 
+      />
+         
       <table>
         <thead>
           <tr>
