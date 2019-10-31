@@ -25,6 +25,10 @@ module.exports = {
                 test: /\.js$/,
                 loader: "source-map-loader"
             },
+            {
+              test: /\.(s*)css$/,
+              loader: ['style-loader', 'css-loader', 'sass-loader']
+            }
         ]
     },
     output : {

@@ -18,13 +18,14 @@ export const Validations = () => {
 
   return(
     <div>
-      <h3>Validations</h3>
+      <header>
+        <h3>Validations</h3>
+      </header>
+      
+      
       <button onClick={newButtonOnClick}>New</button>
 
-      {
-        // TODO : use <List>...</List>
-      }
-      <List 
+      {/* <List 
         columns={['label', 'rule', 'description']} 
         customRenderRow={(list:any[]) => {
           // TODO : need to know the type of data here inorder to render the rows correctly
@@ -32,7 +33,7 @@ export const Validations = () => {
             <div style={{display: "inline"}}>{item.label}</div>
           });
         }} 
-      />
+      /> */}
          
       <table>
         <thead>

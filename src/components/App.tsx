@@ -7,42 +7,42 @@ import { CalculationDetails } from './CalculationDetails';
 import { NewInputParameter } from './NewInputParameter';
 import { Validations } from './Validations';
 import { NewValidation } from './NewValidation';
+import { MasterPage } from './MasterPage';
+import { NewCalculation } from './NewCalculation';
 
 export const App = () => {
-    // TODO : maybe wrap the top-level <App> in <Router> instead
-    return(
-      
-        <Router>
-            <Link to="/home">Home</Link>
-            <Link to="/calculations">Calculations</Link>
+  // TODO : maybe wrap the top-level <App> in <Router> instead
+  return(
+    <Router>
+      <Switch>
+        <Route path="/validations/new">
+          <MasterPage><NewValidation /></MasterPage>
+        </Route>
+        <Route path="/validations">
+          <MasterPage><Validations /></MasterPage>
+        </Route>
 
-            <Switch>
+        <Route path="/calculations/new">
+          <MasterPage><NewCalculation /></MasterPage>
+        </Route>
+        <Route path="/calculations/:id/inputparameter/new">
+          <MasterPage><NewInputParameter /></MasterPage>
+        </Route>
+        <Route path="/calculations/:id">
+          <MasterPage><CalculationDetails /></MasterPage>
+        </Route>
+        <Route path="/calculations">
+          <MasterPage><Calculations /></MasterPage>
+        </Route>
 
-                <Route path="/home">
-                    <Home />
-                </Route>
+        <Route path="/home">
+          <MasterPage><Home /></MasterPage>
+        </Route>
 
-                <Route path="/validations/new">
-                  <NewValidation />
-                </Route>
-
-                <Route path="/validations">
-                  <Validations />
-                </Route>
-
-                <Route path="/calculations/:id/inputparameter/new">
-                    <NewInputParameter />
-                </Route>
-
-                <Route path="/calculations/:id">
-                    <CalculationDetails />
-                </Route>
-
-                <Route path="/calculations">
-                    <Calculations />
-                </Route>
-                
-            </Switch>
-        </Router>
-    );
+        <Route exact path="/">
+          <MasterPage><Home /></MasterPage>
+        </Route>
+      </Switch>
+    </Router>
+  );
 }

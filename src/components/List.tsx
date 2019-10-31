@@ -22,9 +22,9 @@ export const List = (props: ListProps) => {
       {
         props.headers.map(item => <div>{item}</div>)
       }
-      {/* {
+      {/* 
         props.renderContents()
-      } */}
+       */}
     </div>
   );
 };
