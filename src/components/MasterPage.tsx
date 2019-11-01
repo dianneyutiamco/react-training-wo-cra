@@ -11,9 +11,7 @@ export const MasterPage = (props: any) => {
     <div>
       <header>Header</header>
 
-      <nav>
-        <Menu />
-      </nav>
+      <Menu />
 
       <main>
         {props.children}
