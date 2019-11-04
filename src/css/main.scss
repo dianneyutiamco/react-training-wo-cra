@@ -1,57 +1,36 @@
 body {
   margin: 0;
-  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-family: "apercu",sans-serif;
+  // font-family: "Avenir Next", "Avenir", sans-serif;
   font-size: 14px;
 }
 
 nav {
   font-size: 20px;
-  padding: 5px;
   margin: 0;
-  
-  
-
-  ul {
-    list-style: none;
-    margin-left: 0;
-    padding-left: 0;
-
-    a {
-      text-decoration: none;
-      opacity: .6;
-      color: #333;
-      &:hover {
-        opacity: 1;
-      }
-    }
-
-    &.menu-parent-list {
-      display: none;
-      &.open {
-        display: block;
-      }
-    }
-
-  }
 
   .burger-menu-icon {
-    display: inline-block;
+    margin: 30px 0 30px 30px;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
+
     * {
-      font-size: 15px;
       width: 30px;
       height: 1px;
-      background-color: #333;
-      transition: 0.5s;
+      background-color: #333;// TODO : common
+      transition: transform 0.5s ease-in;
     }
 
     :nth-child(2) {
       margin: 8px 0;
+      transition: opacity 0.5s;
     }
 
     &.open {
-      // background-color: #c3345b;
-
+      > * {
+        background-color: #ADADAD;
+      }
       :first-child {
         transform: rotate(45deg) translate(3px, 10px);
       }
@@ -62,8 +41,48 @@ nav {
         transform: rotate(-45deg) translate(2px, -10px);
       }
     }
-    
   }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    color: #ADADAD;
+
+    a {
+      text-decoration: none;
+      // opacity: .6;
+      color: #ADADAD;
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &.menu-parent-list {
+      height: 100%;
+      width: 330px;
+      background: #3A3A3A;
+      padding: 80px 0 0 30px;
+      margin: 0 0 0 -5px; // browser sets margin for ul automatically, needed a custom rule
+      position: absolute;
+      top: 0;
+      transform: translateX(-100%);
+      transition: transform 0.5s ease-in;
+
+      &.open {
+        transform: none;
+      }
+
+      > li  {
+        padding-bottom: 10px;
+
+        > ul > li {
+          padding: 10px 0 0 30px;
+        }
+      }
+    }
+  }
+
+  
   
   
 }

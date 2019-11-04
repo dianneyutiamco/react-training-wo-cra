@@ -14,15 +14,16 @@ export const Menu = () => {
       {/* // TODO : create menu component and components for common items
       // TODO : hide/show active menus */}
       <div className={"burger-menu-icon" + (isMenuOpen ? " open" : "")} onClick={() => handleBurgerMenuIconClick()}>
-        <div className="burger-bar-1"></div>
-        <div className="burger-bar-2"></div>
-        <div className="burger-bar-3"></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
 
-      <ul className={"menu-parent-list" + (isMenuOpen ? " open" : "")}>
+      <ul className={"menu-parent-list" + (isMenuOpen ? " open" : "")} >
         <li>
           <span>Calculations</span>
-          <ul className="menu-child-list">
+          <Link to="/calculations">List</Link>
+          <ul>
             <li>
               <Link to="/calculations">List</Link>
             </li>

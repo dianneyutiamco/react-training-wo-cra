@@ -9,9 +9,9 @@ export const MasterPage = (props: any) => {
 
   return(
     <div>
-      <header>Header</header>
-
-      <Menu />
+      <header>
+        <Menu />
+      </header>
 
       <main>
         {props.children}
