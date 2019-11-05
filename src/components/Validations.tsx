@@ -1,7 +1,7 @@
 import * as React from "react";
 import { NewValidation } from "./NewValidation";
 import { useHistory } from "react-router";
-import { List } from "./List";
+import "../css/components/table.scss";
 
 interface ListRow {
   label: string;
@@ -19,7 +19,7 @@ export const Validations = () => {
   return(
     <div>
       <header>
-        <h3>Validations</h3>
+        <h1 className="table-title">Validations</h1>
       </header>
       
       

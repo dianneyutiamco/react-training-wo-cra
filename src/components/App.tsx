@@ -9,6 +9,7 @@ import { Validations } from './Validations';
 import { NewValidation } from './NewValidation';
 import { MasterPage } from './MasterPage';
 import { NewCalculation } from './NewCalculation';
+import "typeface-roboto";
 
 export const App = () => {
   // TODO : maybe wrap the top-level <App> in <Router> instead
